@@ -18,5 +18,7 @@ namespace Library
             SetCursorPosition(X, Y);
             Write(Symbol);
         }
+
+        internal bool IsHit(Point point) => X == point.X && Y == point.Y;
     }
 }
