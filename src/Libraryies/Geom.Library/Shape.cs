@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public abstract class Shape : IDraw
+    public abstract class Shape : IDraw, IEnumerable<Point>
     {
         protected virtual IList<Point> Locus { get; init; } = new List<Point>();
 
@@ -17,5 +18,9 @@ namespace Library
                 point.Draw();
             }
         }
+
+        public IEnumerator<Point> GetEnumerator() => Locus.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => Locus.GetEnumerator();
     }
 }
